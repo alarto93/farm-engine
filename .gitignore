@@ -1,0 +1,55 @@
+# --- SYSTEM ---
+.DS_Store
+Thumbs.db
+*.swp
+*.log
+
+# --- DOCKER & DATABASE ---
+# Nunca subir los datos físicos de la base de datos
+data/
+mongo_data/
+*.db
+*.sqlite3
+
+# --- PYTHON (Backend) ---
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.coverage
+htmlcov/
+dist/
+build/
+*.egg-info/
+.venv/
+venv/
+ENV/
+env/
+.env
+.python-version
+
+# --- NODE / REACT (Frontend) ---
+frontend/node_modules/
+frontend/dist/
+frontend/build/
+frontend/.env
+frontend/.env.local
+frontend/.env.development.local
+frontend/.env.test.local
+frontend/.env.production.local
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+.eslintcache
+
+# --- IDEs ---
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# --- ENGINE SPECIFIC ---
+# Archivos temporales de procesamiento de datos
+*.csv
+*.xlsx
+.ipynb_checkpoints/
