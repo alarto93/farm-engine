@@ -1,16 +1,29 @@
 services:
   mongodb:
     image: mongo:latest
+    container_name: farmengine-mongo
     ports: ["27017:27017"]
     volumes: ["mongo_data:/data/db"]
 
   api:
     build: .
+    container_name: farmengine-api
     ports: ["8000:8000"]
     environment:
-      - MONGO_URL=mongodb://mongodb:27017
+      - MONGO_URL=mongodb://localhost:27017
     privileged: true # Necesario para que psutil acceda al hardware real
     depends_on: [mongodb]
+
+  tests:
+    build: .
+    container_name: farmengine-tests
+    command: pytest app/tests/ -v
+    environment:
+      - MONGO_URL=mongodb://localhost:27017
+    depends_on:
+      - mongodb
+    volumes:
+      - .:/app  # Opcional: para ver cambios sin reconstruir
 
 volumes:
   mongo_data:
