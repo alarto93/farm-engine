@@ -37,7 +37,7 @@ const App = () => {
         setData(newData);
         
         setHistory(prev => {
-          const avg = newData.p_cores.reduce((a, b) => a + b, 0) / newData.p_cores.length;
+          const avg = newData.p_cores.reduce((a, b) => a + b, 0) / newData.p_cores.length
           const newPoint = {
             time: new Date().toLocaleTimeString(),
             avg_p_load: avg,

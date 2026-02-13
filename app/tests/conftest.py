@@ -12,15 +12,15 @@ from app.engine import orchestrator
 from app.database import db_telemetry
 
 
-@pytest.fixture(scope="session")
-def event_loop():
-    """Configuración del bucle de eventos para la sesión de pruebas."""
-    try:
-        loop = asyncio.get_running_loop()
-    except RuntimeError:
-        loop = asyncio.new_event_loop()
-    yield loop
-    loop.close()
+# @pytest.fixture(scope="session")
+# def event_loop():
+#     """Configuración del bucle de eventos para la sesión de pruebas."""
+#     try:
+#         loop = asyncio.get_running_loop()
+#     except RuntimeError:
+#         loop = asyncio.new_event_loop()
+#     yield loop
+#     loop.close()
 
 
 @pytest.fixture(scope="session", autouse=True)

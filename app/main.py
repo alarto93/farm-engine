@@ -81,8 +81,6 @@ app.add_middleware(
 )
 
 # --- Endpoints REST ---
-
-
 @app.get("/")
 async def health_check():
     return {"status": "online", "engine": "Python 3.13.9", "cores": psutil.cpu_count()}

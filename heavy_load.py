@@ -5,7 +5,7 @@ import time
 
 async def send_single_request(client, task_id):
     # Datos de prueba: una lista de números
-    payload = {"id": f"task_{task_id}", "values": [float(i) for i in range(1000)]}
+    payload = {"id": f"task_{task_id}", "values": [float(i) for i in range(150)]}
     try:
         # Timeout None es vital para no cortar la conexión mientras el worker procesa
         response = await client.post(
@@ -23,7 +23,7 @@ async def run_stress_test():
 
         # Creamos 50 tareas para enviar en paralelo
         start_time = time.perf_counter()
-        tasks = [send_single_request(client, i) for i in range(50)]
+        tasks = [send_single_request(client, i) for i in range(100)]
 
         # Las lanzamos todas a la vez
         await asyncio.gather(*tasks)
