@@ -12,7 +12,10 @@ import {
 
 const MetricsChart = ({ history }) => {
   return (
-    <div className="bg-slate-900/50 border border-slate-800 p-6 rounded-xl w-full h-[380px] flex flex-col">
+    <div className="
+    bg-white border border-slate-300
+    dark:bg-slate-950 dark:border-slate-800
+    p-6 rounded-xl w-full h-[380px] flex flex-col">
       <h2 className="text-[10px] text-slate-500 mb-6 uppercase tracking-widest font-bold flex items-center gap-2">
         <span className="w-2 h-2 bg-blue-500 rounded-full animate-pulse" />
         Load History (Last 30 samples)

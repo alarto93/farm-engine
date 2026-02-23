@@ -3,7 +3,7 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm ci
 COPY . .
-RUN npm run dev
+RUN npm run build
 
 FROM nginx:stable-alpine
 # Vite outputs to /app/dist by default — copy that into nginx html dir
