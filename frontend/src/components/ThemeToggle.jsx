@@ -30,11 +30,20 @@ export function ThemeToggle() {
   };
 
   return (
+  <div className="absolute top-4 right-4">
     <button
       onClick={toggleTheme}
-      className="px-3 py-1 rounded border border-gray-400 dark:border-gray-600"
+      className="relative flex items-center justify-between h-7 w-16 rounded-full px-2
+        bg-gray-300 dark:bg-gray-700 transition-colors"
     >
-      {theme !== "light" ? "🌙 Modo oscuro" : "☀️ Modo claro"}
+      <span className="text-sm">☀️</span>
+      <span className="text-sm">🌙</span>
+
+      <span
+        className={`absolute h-6 w-6 rounded-full bg-white dark:bg-gray-200 shadow transform transition-transform
+          ${theme === "light" ? "translate-x-0" : "translate-x-8"}`}
+      ></span>
     </button>
+  </div>
   );
 }
