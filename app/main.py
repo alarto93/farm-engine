@@ -80,6 +80,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
 # --- Endpoints REST ---
 @app.get("/")
 async def health_check():

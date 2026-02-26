@@ -1,18 +1,10 @@
 version: '3.8'
 services:
-  node-api:
-    container_name: node-backend
-    build: ./backend
-    ports:
-      - "5000:5000"
-
   frontend:
     container_name: react-frontend
     build:
       context: ./frontend
     ports:
       - "80:80"  # En lugar de "3000:80"
-    depends_on:
-      - node-api
     environment:
       - REACT_APP_API_URL=http://node-api:5000

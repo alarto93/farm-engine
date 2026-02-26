@@ -1,24 +1,9 @@
 services:
-
   api:
     build: .
     container_name: farmengine-api
     ports:
       - "8000:8000"
     environment:
-      - MONGO_URL=mongodb://mongodb:27017
+      - MONGO_URL=mongodb://host.docker.internal:27017
     privileged: true # Necesario para que psutil acceda al hardware real
-    
-  # tests:
-  #   build: .
-  #   container_name: farmengine-tests
-  #   command: pytest app/tests/ -v
-  #   environment:
-  #     - MONGO_URL=mongodb://mongodb:27017
-  #   depends_on:
-  #     - mongodb
-  #   volumes:
-  #     - .:/app  # Opcional: para ver cambios sin reconstruir
-
-volumes:
-  mongo_data:

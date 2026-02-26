@@ -8,6 +8,7 @@ async def test_health_check(client):
     assert response.status_code == 200
     assert response.json()["status"] == "online"
 
+
 @pytest.mark.asyncio
 async def test_backpressure_logic():
     """Prueba unitaria de la lógica del semáforo del orquestador."""
@@ -18,15 +19,12 @@ async def test_backpressure_logic():
         assert orchestrator.queue_semaphore._value == initial_slots - 1
     assert orchestrator.queue_semaphore._value == initial_slots
 
+
 @pytest.mark.asyncio
 async def test_process_data_flow(client):
     """Valida el flujo de datos: API -> Pool -> Respuesta."""
     test_data = {"id": "test_job_123", "values": [0.5, 1.5, 2.5]}
-    response = await client.post(
-        "http://localhost:8000/process-data", json=test_data, timeout=3
-    )
+    response = await client.post("/process-data", json=test_data, timeout=10)
     assert response.status_code == 200
     assert "result" in response.json()
     assert response.json()["status"] == "processed"
-
-

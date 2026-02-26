@@ -8,7 +8,7 @@ class TelemetryDB:
         self.client = None
         self.db = None
         # Obtenemos la URL de conexión de las variables de entorno o usamos la por defecto de Docker
-        self.mongo_url = os.getenv("MONGO_URL", "mongodb://localhost:27017")
+        self.mongo_url = os.getenv("MONGO_URL", "mongodb://localhost:27017/")
 
     async def init_db(self):
         """Inicializa la conexión con MongoDB y las colecciones."""
@@ -48,7 +48,6 @@ class TelemetryDB:
                 "result": result,
                 "timestamp": datetime.datetime.now(datetime.timezone.utc),
             }
-            print(f'guardando {log_entry}')
             await self.db.task_logs.insert_one(log_entry)
         except Exception as e:
             print(f"⚠️ Error guardando log de tarea: {e}")
